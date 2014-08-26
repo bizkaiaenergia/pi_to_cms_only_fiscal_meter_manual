@@ -71,6 +71,29 @@ public class pi_to_cms_fiscalmeter {
 	public static String mes_menos_dos_horas_corto ;
 	
 	
+public static String 	 hora_menos_una_hora;
+	
+	public static String 	 minutos_menos_una_hora;
+	
+	public static String 	 dia_menos_una_hora ;
+	
+	public static String año_menos_una_hora_corto;
+	public static String 	 año_menos_una_hora_largo;
+	
+	
+	public static String mes_menos_una_hora;
+	public static String mes_menos_una_hora_corto ;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * @param args
 	 */
@@ -103,24 +126,24 @@ public class pi_to_cms_fiscalmeter {
 				GregorianCalendar cal_fecha = new GregorianCalendar ();
 				cal_fecha.setTime(fecha);
 				cal_fecha.add(Calendar.HOUR_OF_DAY,+1);
-				Date Fecha_menos_una_hora = cal_fecha.getTime();
+				Date Fecha_mas_una_hora = cal_fecha.getTime();
 				
 				formatter = new SimpleDateFormat("HH");
-				 hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 hora_posterior= formatter.format(Fecha_mas_una_hora);
 				formatter = new SimpleDateFormat("mm");
-				 minutos_hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 minutos_hora_posterior= formatter.format(Fecha_mas_una_hora);
 				formatter = new SimpleDateFormat("dd");
-				 dia_hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 dia_hora_posterior= formatter.format(Fecha_mas_una_hora);
 				formatter = new SimpleDateFormat("yy");
-				 año_hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 año_hora_posterior= formatter.format(Fecha_mas_una_hora);
 				 formatter = new SimpleDateFormat("yyyy");
-				 año_hora_posterior_largo= formatter.format(Fecha_menos_una_hora);
+				 año_hora_posterior_largo= formatter.format(Fecha_mas_una_hora);
 				 formatter = new SimpleDateFormat("MM");
-				 mes_corto_hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 mes_corto_hora_posterior= formatter.format(Fecha_mas_una_hora);
 				 formatter = new SimpleDateFormat("MMM",new Locale("us_US"));
-				 mes_hora_posterior= formatter.format(Fecha_menos_una_hora);
+				 mes_hora_posterior= formatter.format(Fecha_mas_una_hora);
 				 
-				 /*
+				
 				 
 				 GregorianCalendar cal_fecha2 = new GregorianCalendar ();
 					cal_fecha2.setTime(fecha);
@@ -141,14 +164,39 @@ public class pi_to_cms_fiscalmeter {
 					 mes_menos_dos_horas_corto= formatter.format(Fecha_menos_dos_horas);
 					 formatter = new SimpleDateFormat("MMM",new Locale("us_US"));
 					 mes_menos_dos_horas= formatter.format(Fecha_menos_dos_horas);
-				 
-				*/
+				
+					 
+					 GregorianCalendar cal_fecha3 = new GregorianCalendar ();
+						cal_fecha3.setTime(fecha);
+						cal_fecha3.add(Calendar.HOUR_OF_DAY,-1);
+						Date Fecha_menos_una_hora = cal_fecha3.getTime();
+						
+						formatter = new SimpleDateFormat("HH");
+						 hora_menos_una_hora= formatter.format(Fecha_menos_una_hora);
+						formatter = new SimpleDateFormat("mm");
+						 minutos_menos_una_hora= formatter.format(Fecha_menos_una_hora);
+						formatter = new SimpleDateFormat("dd");
+						 dia_menos_una_hora= formatter.format(Fecha_menos_una_hora);
+						formatter = new SimpleDateFormat("yy");
+						 año_menos_una_hora_corto= formatter.format(Fecha_menos_una_hora);
+						 formatter = new SimpleDateFormat("yyyy");
+						 año_menos_una_hora_largo= formatter.format(Fecha_menos_una_hora);
+						 formatter = new SimpleDateFormat("MM");
+						 mes_menos_una_hora_corto= formatter.format(Fecha_menos_una_hora);
+						 formatter = new SimpleDateFormat("MMM",new Locale("us_US"));
+						 mes_menos_una_hora= formatter.format(Fecha_menos_una_hora);
+					 
+					 
+					 
+					 
+					 
+				
 				System.out.println(ruta_temp_outFile);
 				System.out.println(ruta_cms_outFile);
 				
 				//se comentan estas lineas para probar con el comando pisnap.
 				String texto1 = "@echo off\r\n@table piarc\r\n@mode list\r\n@istru tag, starttime, endtime, count\r\n@ostru tag, value\r\n@ostru ...\r\n";	
-				//String texto2 = "FiscalMeter.Tag,"+ dia_hora_posterior+"-"+ mes_hora_posterior+"-"+año_hora_posterior+" "+hora_posterior+":00:00,"+dia_actual+"-"+mes_actual+"-"+año_actual+
+				//String texto2 = "FiscalMeter.Tag,"+ dia_menos_dos_horas+"-"+ mes_menos_dos_horas+"-"+año_menos_dos_horas_corto+" "+hora_menos_dos_horas+":00:00,"+dia_actual+"-"+mes_actual+"-"+año_actual+
 				//		" "+hora_actual+":00:00,1\r\n";
 				String texto2 = "FiscalMeter.Tag,"+ dia_actual+"-"+ mes_actual+"-"+año_actual+" "+hora_actual+":00:00,"+dia_hora_posterior+"-"+mes_hora_posterior+"-"+año_hora_posterior+
 								" "+hora_posterior+":00:00,1\r\n";		
@@ -168,7 +216,9 @@ public class pi_to_cms_fiscalmeter {
 				Process pr1;
 				///////String archivo_salida = temp_outFile + "AmorebietaCMSPlantData_" + año_hora_anterior_largo + año_hora_anterior_largo + dia_hora_anterior + hora_anterior + "_ZIV.dat";
 				///String archivo_salida = temp_outFile + "AmorebietaCMSPlantData_" + año_menos_dos_horas_largo + mes_menos_dos_horas_corto + dia_menos_dos_horas + hora_menos_dos_horas + "_ZIV.dat";
-				String archivo_salida = ruta_temp_outFile + "AmorebietaCMSPlantData_" + año_largo + mes_corto + dia_actual + hora_actual + "_ZIV.dat";
+				//String archivo_salida = ruta_temp_outFile + "AmorebietaCMSPlantData_" + año_largo + mes_corto + dia_actual + hora_actual + "_ZIV.dat";
+				String archivo_salida = ruta_temp_outFile + "AmorebietaCMSPlantData_" + año_menos_una_hora_largo + mes_menos_una_hora_corto + dia_menos_una_hora + hora_menos_una_hora + "_ZIV.dat";
+				
 				
 				
 				
@@ -198,7 +248,7 @@ public class pi_to_cms_fiscalmeter {
 				   System.out.println("No se ha podido mover el fichero");
 				}else{
 				 // System.out.println("Fichero " + "AmorebietaCMSPlantData_" + año_menos_dos_horas_largo + mes_menos_dos_horas_corto + dia_menos_dos_horas + hora_menos_dos_horas + "_ZIV.dat"+ " movido con exito");
-					 System.out.println("Fichero " + "AmorebietaCMSPlantData_" + año_largo + mes_corto + dia_actual + hora_actual + "_ZIV.dat"+ " movido con exito");
+					 System.out.println("Fichero " + "AmorebietaCMSPlantData_" + año_menos_una_hora_largo + mes_menos_una_hora_corto + dia_menos_una_hora + hora_menos_una_hora + "_ZIV.dat"+ " movido con exito");
 				}
 				
 				
